@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.braisedpanda.waterfee.mapper.WaterFeeCategoryMapper">
+
+    <select id="selectByFactory" resultType="com.braisedpanda.waterfee.model.dto.WaterFeeCategoryDto">
+        select * from water_fee_category where factory_id = #{factoryId} order by level asc
+    </select>
+
+</mapper>
