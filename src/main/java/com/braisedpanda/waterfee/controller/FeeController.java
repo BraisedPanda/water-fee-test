@@ -52,20 +52,21 @@ public class FeeController {
             feeList.add(fee);
 
         }
-        System.out.println(stepWaterList);
-        System.out.println(feeList);
+
     }
 
     public double getStepWaterFee(List<WaterFeeCategoryDto> waterFeeCategoryList, Double consumption){
         //1.确定当前用水量的阶数
         int jieshu = 1;
-        for(int i=1; i<waterFeeCategoryList.size();i++){
+        for(int i=0; i<waterFeeCategoryList.size();i++){
             if(consumption > waterFeeCategoryList.get(i).getEndNumber()){
-                jieshu ++;
+                jieshu++ ;
             }
         }
         //2.阶数确定后，分成两部计算：（1）计算此前阶数-1的固定消费[阶数必定大于1]   （2）计算当前阶的阶数消费
-
+        if(jieshu > waterFeeCategoryList.size()){
+            jieshu = waterFeeCategoryList.size();
+        }
 
         double fee = 0;
         if(jieshu == 1){
